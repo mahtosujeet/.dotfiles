@@ -20,6 +20,7 @@ function RunCode()
     json = "jq . " .. filepath,
     -- For latex files
     latex = "latexmk -pdf " .. filepath,
+    java = "mkdir -p output && javac -d output " .. filepath .. " && java -cp output " .. vim.fn.expand("%:r"),
   }
 
   local command = commands[filetype]
