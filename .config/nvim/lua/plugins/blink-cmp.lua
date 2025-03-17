@@ -20,7 +20,7 @@ return {
 
     completion = {
       menu = {
-        max_height = 4,
+        max_height = 10,
         draw = {
           columns = {
             { "label", "label_description", gap = 1 },

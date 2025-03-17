@@ -8,6 +8,7 @@ vim.opt.clipboard = ""
 
 -- Tab and indentation settings
 local tablength = 2
+
 vim.opt.tabstop = tablength -- Number of spaces that a <Tab> in the file counts for
 vim.opt.softtabstop = tablength -- Number of spaces that a <Tab> counts for while performing editing operations
 vim.opt.shiftwidth = tablength -- Number of spaces to use for each step of (auto)indent
