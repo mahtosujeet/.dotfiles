@@ -8,7 +8,7 @@ $HOME/.config/hypr/themes/theme.conf|> $HOME/.config/hypr/themes/colors.conf
 
 $GTK_THEME = Gruvbox-Retro
 $ICON_THEME = Gruvbox-Plus-Dark
-$CURSOR_THEME = Gruvbox-Retro
+# $CURSOR_THEME = Gruvbox-Retro
 $CURSOR_SIZE = 20
 $COLOR_SCHEME = prefer-dark
 
@@ -18,13 +18,13 @@ $COLOR_SCHEME = prefer-dark
 exec = gsettings set org.gnome.desktop.interface icon-theme $ICON_THEME
 exec = gsettings set org.gnome.desktop.interface gtk-theme $GTK_THEME
 exec = gsettings set org.gnome.desktop.interface color-scheme $COLOR_SCHEME
-exec = gsettings set org.gnome.desktop.interface cursor-theme $CURSOR_THEME
-exec = gsettings set org.gnome.desktop.interface cursor-size $CURSOR_SIZE
-exec = hyprctl setcursor $CURSOR_THEME $CURSOR_SIZE
+# exec = gsettings set org.gnome.desktop.interface cursor-theme $CURSOR_THEME
+# exec = gsettings set org.gnome.desktop.interface cursor-size $CURSOR_SIZE
+# exec = hyprctl setcursor $CURSOR_THEME $CURSOR_SIZE
 
 general {
     gaps_in = 3
-    gaps_out = 8
+    gaps_out = 0,6,6,6
     border_size = 2
     col.active_border = rgba(FE8019FF)
     # col.inactive_border = rgba(1e8b50d9) rgba(50b050d9) 45deg
@@ -53,4 +53,4 @@ decoration {
     }
 }
 
-layerrule = blur,waybar
+# layerrule = blur,waybar
