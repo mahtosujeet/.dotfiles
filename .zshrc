@@ -65,6 +65,8 @@ zstyle ':completion::complete:*' gain-privileges 1
 #: Keybindings {{{
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
+bindkey -v
+KEYTIMEOUT=1
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -187,11 +189,11 @@ alias vc="protonvpn-cli c -f"
 alias vd="protonvpn-cli d"
 
 # eza (ls replacement, install eza)
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
+alias  l='eza -lh  --icons=auto --group-directories-first' # long list
+alias ls='eza -1   --icons=auto --group-directories-first' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree --git-ignore' # list folder as tree
+alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
+alias lt='eza --icons=auto --tree --git-ignore --group-directories-first' # list folder as tree
 
 # github copliot
 alias ghce="gh copilot explain"
@@ -209,7 +211,7 @@ alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
 alias np=pnpm
-alias npm=pnpm
+# alias npm=pnpm
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
