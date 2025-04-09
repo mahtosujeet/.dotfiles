@@ -1,6 +1,7 @@
 # vim:foldmethod=marker
+alias gpu="lspci | grep -E 'VGA|3D'"
 
-source ~/.config/zsh/zap.sh
+source ~/.config/zsh/zap.zsh
 #: Look and Feel {{{
 # to set truecolor
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -264,6 +265,6 @@ fi
 
 # Only run fastfetch if terminal is kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    fastfetch
+    # fastfetch
 fi
 
