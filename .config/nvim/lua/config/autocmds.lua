@@ -21,6 +21,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.cmd("Copilot disable")
     vim.cmd("SupermavenStop")
+    -- Disable format on save for CPP files
+    vim.b.autoformat = false
   end,
 })
 
