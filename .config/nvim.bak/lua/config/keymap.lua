@@ -23,6 +23,9 @@ set("n", "<leader>q", ":q!<CR>", { desc = "Quit without saving" })
 -- Open config file
 set("n", "<leader>nc", ":tabnew $HOME/.config/nvim/<CR>", { desc = "Open Neovim config" })
 
+-- git
+set("n", "<leader>gb", ":Gitsigns blame<CR>", { desc = "View git blame-line" })
+
 -- Function to run the command based on filetype
 function RunCode()
   local filetype = vim.bo.filetype

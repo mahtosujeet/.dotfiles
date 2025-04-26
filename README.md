@@ -141,6 +141,29 @@ pacman -Syy archlinux-keyring
 
 Make sure to update the system after this.
 
+## Disable wake on mouse move
+1. `lsusb`
+ output should be something like this:
+```
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 5986:211b Bison Electronics Inc. HD Webcam
+Bus 001 Device 003: ID 046d:c534 Logitech, Inc. Nano Receiver
+Bus 001 Device 004: ID 8087:0033 Intel Corp. AX211 Bluetooth
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+```
+
+here `046d` is the vendor id and `c534` is the product id of the mouse.
+
+2. Create the udev rule
+`sudoedit /etc/udev/rules.d/99-disable-logitech-wakeup.rules`
+
+  Paste the following content in the file
+
+```txt
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c534", TEST=="power/wakeup", ATTR{power/wakeup}="disabled"
+```
+
+
 ## Other Apps
 
 - `evince` - PDF Reader

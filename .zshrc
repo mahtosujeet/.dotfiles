@@ -1,5 +1,7 @@
 # vim:foldmethod=marker
+alias gpu="lspci | grep -E 'VGA|3D'"
 
+source ~/.config/zsh/zap.zsh
 #: Look and Feel {{{
 # to set truecolor
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -45,12 +47,14 @@ autoload -Uz compinit promptinit
 compinit
 
 # Plguins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
 
 # case insensitive path-completion
 # NOTE doesnt work with autosuggest tab key binding
-# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -62,6 +66,8 @@ zstyle ':completion::complete:*' gain-privileges 1
 #: Keybindings {{{
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
+bindkey -v
+KEYTIMEOUT=1
 typeset -g -A key
 
 key[Home]="${terminfo[khome]}"
@@ -184,11 +190,15 @@ alias vc="protonvpn-cli c -f"
 alias vd="protonvpn-cli d"
 
 # eza (ls replacement, install eza)
-alias  l='eza -lh  --icons=auto' # long list
-alias ls='eza -1   --icons=auto' # short list
+alias  l='eza -lh  --icons=auto --group-directories-first' # long list
+alias ls='eza -1   --icons=auto --group-directories-first' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto' # long list dirs
-alias lt='eza --icons=auto --tree --git-ignore' # list folder as tree
+alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
+alias lt='eza --icons=auto --tree --git-ignore --group-directories-first' # list folder as tree
+
+# github copliot
+alias ghce="gh copilot explain"
+alias ghcs="gh copilot suggest"
 
 # other
 # alias neofetch="clear && neofetch"
@@ -201,6 +211,8 @@ alias yd="yarn dev"
 alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
+alias np=pnpm
+# alias npm=pnpm
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
@@ -222,12 +234,21 @@ setopt appendhistory
 
 setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
 setopt HIST_IGNORE_SPACE
+
+yazi() {
+  local cwd_file="/tmp/yazi-cwd-$USER"
+  command yazi --cwd-file="$cwd_file" "$@"
+  if [[ -f "$cwd_file" ]]; then
+    cd "$(cat "$cwd_file")"
+    rm -f "$cwd_file"
+  fi
+}
 #}}}
 
 #: Fixes {{{
 # for firefox wayland support & touch screen
-export MOZ_USE_XINPUT2=1
-export MOZ_ENABLE_WAYLAND=1
+# export MOZ_USE_XINPUT2=1
+# export MOZ_ENABLE_WAYLAND=1
 
 #}}}
 #
@@ -244,5 +265,6 @@ fi
 
 # Only run fastfetch if terminal is kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
-    fastfetch
+    # fastfetch
 fi
+
