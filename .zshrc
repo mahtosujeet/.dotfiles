@@ -1,7 +1,6 @@
 # vim:foldmethod=marker
 alias gpu="lspci | grep -E 'VGA|3D'"
 
-source ~/.config/zsh/zap.zsh
 #: Look and Feel {{{
 # to set truecolor
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -47,10 +46,8 @@ autoload -Uz compinit promptinit
 compinit
 
 # Plguins
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # case insensitive path-completion
 # NOTE doesnt work with autosuggest tab key binding
@@ -133,6 +130,7 @@ alias ...="cd ../.."
 # pacman
 alias p=paru
 alias sps="sudo pacman -S --needed"
+alias spsd="sudo pacman -S --needed --asdeps"
 alias spss="sudo pacman -Ss"
 alias spsi="sudo pacman -Si"
 alias sprns="sudo pacman -Rns"
@@ -193,7 +191,7 @@ alias vd="protonvpn-cli d"
 alias  l='eza -lh  --icons=auto --group-directories-first' # long list
 alias ls='eza -1   --icons=auto --group-directories-first' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
+# alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
 alias lt='eza --icons=auto --tree --git-ignore --group-directories-first' # list folder as tree
 
 # github copliot

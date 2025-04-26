@@ -49,8 +49,6 @@
       "  cout << \"]\\n\";",
       "}",
       "",
-      "long long min(long long a, long long b) { return (a < b) ? a : b; }",
-      "long long max(long long a, long long b) { return (a > b) ? a : b; }",
       "/*",
       "THINK",
       "just dont give up, you can pull it back :)",
