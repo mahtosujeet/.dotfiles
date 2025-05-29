@@ -90,6 +90,17 @@ Add following lines to the top of `~/.config/waybar/config.ctl`
 In case installing these alone doesn't work, remove `~/.thumbnails`,
 then `ln -s $HOME/.cache/thumbnails $HOME/.thumbnails`
 
+## Prompt only the password for a default user in virtual console login
+
+Getty can be used to login from a virtual console with a default user, typing the password but without needing to insert the username. For instance, to prompt the password for username on tty1:
+
+`/etc/systemd/system/getty@tty1.service.d/skip-username.conf`
+```bash
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -- sujeet' --noclear --skip-login - $TERM
+```
+
 ## Chaotic AUR
 
 First, install the primary key - it can then be used to install Chaotic AUR's keyring and mirrorlist.
