@@ -8,8 +8,8 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "hrsh7th/nvim-cmp",                      -- autocompletion for avante commands and mentions
+    "nvim-tree/nvim-web-devicons",           -- or echasnovski/mini.icons
     { "zbirenbaum/copilot.lua", opts = {} }, -- for providers='copilot'
     { "zbirenbaum/copilot-cmp", opts = {} },
 
@@ -43,15 +43,19 @@ return {
     provider = "copilot",
     auto_suggestions_provider = "claude",
     ---@type AvanteSupportedProvider
-    copilot = {
-      endpoint = "https://api.githubcopilot.com",
-      model = "gpt-4o-2024-08-06",
-      proxy = nil, -- [protocol://]host[:port] Use this proxy
-      allow_insecure = false, -- Allow insecure server connections
-      timeout = 30000, -- Timeout in milliseconds
-      temperature = 0,
-      max_tokens = 4096,
-    },
+    providers = {
+      copilot = {
+        endpoint = "https://api.githubcopilot.com",
+        -- model = "gpt-4o-2024-08-06",
+        proxy = nil,            -- [protocol://]host[:port] Use this proxy
+        allow_insecure = false, -- Allow insecure server connections
+        timeout = 30000,        -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 4096,
+        }
+      },
+    }
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
