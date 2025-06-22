@@ -21,7 +21,7 @@ This configuration uses `Hyprdots` project as base for hyprland configuration.
     - Install paru
 
       ```bash
-      git clone <https://aur.archlinux.org/paru-bin> && cd paru-bin && makepkg -si
+      git clone https://aur.archlinux.org/paru-bin && cd paru-bin && makepkg -si
       ```
 
     - Install hyde-cli-git
@@ -46,6 +46,7 @@ This configuration uses `Hyprdots` project as base for hyprland configuration.
         echo "Backing up pre-existing dot files.";
         dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
     fi;
+    rm .bashrc
     dotfiles checkout
     dotfiles config status.showUntrackedFiles no
     ```
@@ -124,7 +125,7 @@ Include = /etc/pacman.d/chaotic-mirrorlist
 1. Add following to `/etc/fstab`
 
 ```
-UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmast=0022  0 0
+UUID=<UUID>     <mount-point>   ntfs    rw,uid=1000,gid=1000,umask=0022,fmask=0022  0 0
 ```
 
 ## Add WARP+
