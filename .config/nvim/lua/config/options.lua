@@ -2,12 +2,13 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+vim.g.autoformat = false
 vim.opt.relativenumber = false -- Show relative line numbers
 
 vim.opt.clipboard = ""
 
 -- Tab and indentation settings
-local tablength = 2
+local tablength = 4
 
 vim.opt.tabstop = tablength -- Number of spaces that a <Tab> in the file counts for
 vim.opt.softtabstop = tablength -- Number of spaces that a <Tab> counts for while performing editing operations

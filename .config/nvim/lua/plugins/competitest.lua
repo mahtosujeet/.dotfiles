@@ -21,6 +21,7 @@ return {
     })
 
     local set = vim.keymap.set
+    local file = "dolphin"
 
     set("n", "<leader>pr", "<cmd>CompetiTest run<CR>", { desc = "Run testcases" })
     set("n", "<leader>pt", "<cmd>CompetiTest receive testcases<CR>", { desc = "Receive testcases" })
@@ -28,6 +29,6 @@ return {
     set("n", "<leader>pc", "<cmd>CompetiTest receive contest<CR>", { desc = "Receive contest" })
     set("n", "<leader>pa", "<cmd>CompetiTest add_testcase<CR>", { desc = "Add testcase" })
     set("n", "<leader>pe", "<cmd>CompetiTest edit_testcase<CR>", { desc = "Edit testcase" })
-    set("n", "<leader>ps", "<cmd>!thunar .&<CR>", { desc = "Open thunar" })
+    set("n", "<leader>ps", "<cmd>!" .. file .. " .&<CR>", { desc = "Open thunar" })
   end,
 }
