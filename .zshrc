@@ -1,6 +1,9 @@
 # vim:foldmethod=marker
 alias gpu="lspci | grep -E 'VGA|3D'"
 
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+
 #: Look and Feel {{{
 # to set truecolor
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -159,7 +162,7 @@ alias g="git"
 alias ga="git add"
 alias gp="git push"
 alias gd="git diff"
-alias gs="git status"
+# alias gs="git status"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias lg="lazygit"
@@ -168,6 +171,40 @@ alias lgdf="lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 # dotfiles config
 alias df='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotfiles=df
+
+# Low quality (smallest size, 72dpi)
+pdf-low() {
+  local infile="$1"
+  local outfile="${infile%.*}-low.pdf"
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+     -dPDFSETTINGS=/screen \
+     -dNOPAUSE -dBATCH -dQUIET \
+     -sOutputFile="$outfile" "$infile"
+  echo "Created $outfile"
+}
+
+# Medium quality (balanced, ~150dpi)
+pdf-mid() {
+  local infile="$1"
+  local outfile="${infile%.*}-mid.pdf"
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+     -dPDFSETTINGS=/ebook \
+     -dNOPAUSE -dBATCH -dQUIET \
+     -sOutputFile="$outfile" "$infile"
+  echo "Created $outfile"
+}
+
+# High quality (closer to print, ~300dpi)
+pdf-high() {
+  local infile="$1"
+  local outfile="${infile%.*}-high.pdf"
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+     -dPDFSETTINGS=/printer \
+     -dNOPAUSE -dBATCH -dQUIET \
+     -sOutputFile="$outfile" "$infile"
+  echo "Created $outfile"
+}
+
 
 # Dotfiles info, use `dot` function
 dot(){
@@ -217,7 +254,7 @@ eval "$(zoxide init zsh --cmd=cd)"
 #}}}
 
 #: Configs {{{
-export PATH="$HOME/.pyenv/shims:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.pyenv/shims:$PATH"
 export EDITOR='nvim'
 
 # zsh history
@@ -251,10 +288,10 @@ yazi() {
 #}}}
 #
 #
-# export http_proxy="http://edcguest:edcguest@172.28.102.14:3128"
-# export https_proxy="https://edcguest:edcguest@172.28.102.14:3128"
-# export HTTP_PROXY="http://edcguest:edcguest@172.28.102.14:3128"
-# export https_proxy="https://edcguest:edcguest@172.28.102.14:3128"
+# export http_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
+# export https_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
+# export HTTP_PROXY="http://edcguest:edcguest@172.31.102.29:3128/"
+# export https_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
 
 # Source NVM if available
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
