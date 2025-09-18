@@ -21,7 +21,7 @@ return {
     })
 
     local set = vim.keymap.set
-    local file = "dolphin"
+    local file = "thunar"
 
     set("n", "<leader>pr", "<cmd>CompetiTest run<CR>", { desc = "Run testcases" })
     set("n", "<leader>pt", "<cmd>CompetiTest receive testcases<CR>", { desc = "Receive testcases" })

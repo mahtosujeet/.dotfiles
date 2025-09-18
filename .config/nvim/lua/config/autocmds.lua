@@ -16,15 +16,15 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "cpp",
-  callback = function()
-    vim.cmd("Copilot disable")
-    vim.cmd("SupermavenStop")
-    -- Disable format on save for CPP files
-    vim.b.autoformat = false
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "cpp",
+--   callback = function()
+--     vim.cmd("Copilot disable")
+--     vim.cmd("SupermavenStop")
+--     -- Disable format on save for CPP files
+--     vim.b.autoformat = false
+--   end,
+-- })
 
 -- Set indent to 4 for specific filetypes
 vim.api.nvim_create_autocmd("FileType", {

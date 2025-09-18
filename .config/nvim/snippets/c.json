@@ -1,0 +1,16 @@
+{
+    "boilerplate": {
+        "prefix": ["bp", "st"],
+        "body": [
+            "#include <stdio.h>",
+            "",
+            "int main(int argc, char *argv[]) {",
+            "    $1",
+            "",
+            "    return 0;",
+            "}"
+        ],
+        "description": "Boiler‑Plate for C code.",
+        "scope": "c"
+    }
+}
