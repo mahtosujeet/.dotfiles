@@ -299,10 +299,10 @@ yazi() {
 # export https_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
 
 # Source NVM if available
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-    source /usr/share/nvm/init-nvm.sh
-fi
-
+# if [ -f /usr/share/nvm/init-nvm.sh ]; then
+#     source /usr/share/nvm/init-nvm.sh
+# fi
+#
 # Only run fastfetch if terminal is kitty
 if [[ "$TERM" == "xterm-kitty" ]]; then
     # fastfetch
