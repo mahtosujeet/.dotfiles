@@ -14,6 +14,10 @@ return {
           args = { "-c", '[[ ! -d "./tests" ]] && mkdir -p "./tests"; g++ -Wall "$(FNAME)" -o "./tests/$(FNOEXT)"' },
           -- args = { "-Wall", "$(FNAME)", "-o", "./tests/$(FNOEXT)" },
         },
+        python = {
+          exec = "bash",
+          args = { "-c", '[[ ! -d "./tests" ]] && mkdir -p "./tests"; cp "$(FNAME)" "./tests/$(FNOEXT).py"' },
+        },
       },
       running_directory = "./tests",
       testcases_directory = "./tests",

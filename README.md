@@ -181,3 +181,35 @@ ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c534"
 - `evince` - PDF Reader
 - `mpv` - Video Player (VLC sucks in Linux)
 - `imv` - Image Viewer
+
+
+# Better Mirrorlist
+```
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://appuals.com/archlinux/$repo/os/$arch
+Server = http://mirror.bizflycloud.vn/archlinux/$repo/os/$arch
+Server = http://mirror.faizuladib.com/archlinux/$repo/os/$arch
+Server = http://vpsmurah.jagoanhosting.com/archlinux/$repo/os/$arch
+## India
+Server = https://mirror.sahil.world/archlinux/$repo/os/$arch
+Server = http://mirror.sahil.world/archlinux/$repo/os/$arch
+Server = https://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
+Server = https://mirror.4v1.in/archlinux/$repo/os/$arch
+## India
+## India
+## India
+Server = https://in.mirrors.cicku.me/archlinux/$repo/os/$arch
+## India
+## India
+Server = https://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
+## India
+Server = http://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
+## India
+Server = http://mirror.albony.in/archlinux/$repo/os/$arch
+## India
+Server = http://mirror.4v1.in/archlinux/$repo/os/$arch
+## India
+Server = http://in.mirrors.cicku.me/archlinux/$repo/os/$arch
+## India
+Server = http://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
+```

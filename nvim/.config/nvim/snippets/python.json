@@ -1,0 +1,32 @@
+{
+    "cp-python": {
+        "prefix": ["cp"],
+        "body": [
+            "import sys",
+            "from math import gcd",
+            "input = lambda: sys.stdin.readline().rstrip()",
+            "MOD = 1_000_000_007",
+            "",
+            "def modpow(a, b, mod=MOD):",
+            "    res = 1",
+            "    while b:",
+            "        if b & 1: res = res * a % mod",
+            "        a = a * a % mod",
+            "        b //= 2",
+            "    return res",
+            "",
+            "def solve():",
+            "    $1",
+            "",
+            "def main():",
+            "    t = int(input())",
+            "    for _ in range(t):",
+            "        solve()",
+            "",
+            "if __name__ == '__main__':",
+            "    main()"
+        ],
+        "description": "Minimal Python CP template with fast I/O, modpow, and yes/no helpers.",
+        "scope": "python"
+    }
+}
