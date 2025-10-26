@@ -231,6 +231,11 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long li
 # alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
 alias lt='eza --icons=auto --tree --git-ignore --group-directories-first' # list folder as tree
 
+# Git
+alias gs=git status
+alias gcm=git status
+alias gco=git status
+
 # github copliot
 alias ghce="gh copilot explain"
 alias ghcs="gh copilot suggest"
