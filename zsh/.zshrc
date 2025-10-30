@@ -173,7 +173,7 @@ alias df='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotfiles=df
 
 # Low quality (smallest size, 72dpi)
-pdf-low() {
+pdf_low() {
   local infile="$1"
   local outfile="${infile%.*}-low.pdf"
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
@@ -184,7 +184,7 @@ pdf-low() {
 }
 
 # Medium quality (balanced, ~150dpi)
-pdf-mid() {
+pdf_mid() {
   local infile="$1"
   local outfile="${infile%.*}-mid.pdf"
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
@@ -195,7 +195,7 @@ pdf-mid() {
 }
 
 # High quality (closer to print, ~300dpi)
-pdf-high() {
+pdf_high() {
   local infile="$1"
   local outfile="${infile%.*}-high.pdf"
   gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
