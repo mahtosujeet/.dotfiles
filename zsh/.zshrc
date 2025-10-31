@@ -252,7 +252,6 @@ alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
 alias np=pnpm
-# alias npm=pnpm
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
@@ -308,3 +307,7 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     # fastfetch
 fi
 
+dms_completion_file="$HOME/.config/DankMaterialShell/zsh_completions.zsh"
+if [[ -e "$dms_completion_file" ]]; then
+    source "$dms_completion_file"
+fi
