@@ -307,7 +307,5 @@ if [[ "$TERM" == "xterm-kitty" ]]; then
     # fastfetch
 fi
 
-dms_completion_file="$HOME/.config/DankMaterialShell/zsh_completions.zsh"
-if [[ -e "$dms_completion_file" ]]; then
-    source "$dms_completion_file"
-fi
+# DMS Shell zsh completions
+eval $(dms completion zsh)
