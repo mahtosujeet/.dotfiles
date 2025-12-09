@@ -271,8 +271,11 @@ export HISTSIZE=10000
 setopt INC_APPEND_HISTORY
 setopt appendhistory
 
-setopt HIST_FIND_NO_DUPS    # No dublicate when step history with arrow keys
-setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS     # Remove older duplicates, keep only the latest
+setopt HIST_IGNORE_DUPS         # Do not store a command if it is same as the previous one
+setopt HIST_FIND_NO_DUPS        # While searching history, skip duplicates
+setopt HIST_SAVE_NO_DUPS        # Do not save duplicates to the history file
+setopt HIST_IGNORE_SPACE        # Do not save commands starting with a space
 
 yazi() {
   local cwd_file="/tmp/yazi-cwd-$USER"
