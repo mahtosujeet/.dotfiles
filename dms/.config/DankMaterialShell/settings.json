@@ -53,7 +53,8 @@
     {
       "id": "brightnessSlider",
       "enabled": true,
-      "width": 50
+      "width": 50,
+      "deviceName": "backlight:intel_backlight"
     },
     {
       "id": "wifi",
@@ -84,6 +85,11 @@
       "id": "darkMode",
       "enabled": true,
       "width": 50
+    },
+    {
+      "id": "audioOutput",
+      "enabled": true,
+      "width": 50
     }
   ],
   "showWorkspaceIndex": false,
@@ -105,8 +111,21 @@
   "lockDateFormat": "",
   "mediaSize": 1,
   "dankBarLeftWidgets": [
+    "launcherButton",
+    "workspaceSwitcher",
+    "focusedWindow"
+  ],
+  "dankBarCenterWidgets": [
+    "music",
+    "clock",
     {
-      "id": "launcherButton",
+      "id": "notificationButton",
+      "enabled": true
+    }
+  ],
+  "dankBarRightWidgets": [
+    {
+      "id": "cpuTemp",
       "enabled": true
     },
     {
@@ -115,42 +134,15 @@
     },
     {
       "id": "memUsage",
-      "enabled": true
-    },
-    {
-      "id": "cpuTemp",
-      "enabled": true
-    },
-    {
-      "id": "workspaceSwitcher",
-      "enabled": true
-    }
-  ],
-  "dankBarCenterWidgets": [
-    {
-      "id": "music",
-      "enabled": true
-    },
-    {
-      "id": "clock",
-      "enabled": true
-    },
-    {
-      "id": "notificationButton",
-      "enabled": true
-    }
-  ],
-  "dankBarRightWidgets": [
-    {
-      "id": "network_speed_monitor",
-      "enabled": true
+      "enabled": true,
+      "showSwap": false
     },
     {
       "id": "systemTray",
       "enabled": true
     },
     {
-      "id": "clipboard",
+      "id": "privacyIndicator",
       "enabled": true
     },
     {
@@ -159,10 +151,6 @@
     },
     {
       "id": "controlCenterButton",
-      "enabled": true
-    },
-    {
-      "id": "powerUsagePlugin",
       "enabled": true
     }
   ],
@@ -243,7 +231,7 @@
   "dankBarVisible": true,
   "dankBarSpacing": 0,
   "dankBarBottomGap": 0,
-  "dankBarInnerPadding": 0,
+  "dankBarInnerPadding": -2,
   "dankBarPosition": 0,
   "dankBarSquareCorners": true,
   "dankBarNoBackground": false,
@@ -295,7 +283,13 @@
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
   "displayNameMode": "system",
-  "screenPreferences": {},
-  "showOnLastDisplay": {},
+  "screenPreferences": {
+    "dankBar": [
+      "all"
+    ]
+  },
+  "showOnLastDisplay": {
+    "dankBar": true
+  },
   "configVersion": 1
 }
