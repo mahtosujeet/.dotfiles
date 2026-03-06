@@ -1,0 +1,9 @@
+[Unit]
+Description=Auto Sync Git Repositories
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash %h/.local/bin/gitsync.sh
+
+[Install]
+WantedBy=default.target

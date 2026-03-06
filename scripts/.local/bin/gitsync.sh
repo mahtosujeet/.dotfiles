@@ -3,9 +3,9 @@
 # --- Configuration ---
 # Add the full paths to the directories you want to sync
 TARGET_DIRS=(
-    "$HOME/Documents/notes"
-    "$HOME/projects/my-cool-app"
-    "$HOME/.dotfiles"
+    "$HOME/Documents/excalidraw"
+    "$HOME/Documents/myebooks"
+    # "$HOME/.dotfiles"
 )
 
 # Current timestamp for the commit message

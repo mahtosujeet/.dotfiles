@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Git Sync Daily
+
+[Timer]
+OnCalendar=daily
+# When your PC is shut down
+Persistent=true
+
+[Install]
+WantedBy=timers.target
