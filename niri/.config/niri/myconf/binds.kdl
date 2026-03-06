@@ -1,0 +1,27 @@
+binds {
+    Alt+Return { fullscreen-window; }
+    Mod+F { maximize-column; }
+
+    // --- Application Shortcuts ---
+    // launch file manager
+    Mod+E { spawn "nautilus" "--new-window"; }
+
+    // launch telegram
+    Mod+T { spawn "64gram-desktop"; }
+
+    // launch thorium browser
+    // Mod+B { spawn "thorium-browser"; }
+
+    // launch chromium-based browser (incognito)
+    // Mod+Shift+B { spawn "thorium-browser" "--incognito"; }
+
+    // launch mcontrolcenter
+    XF86Tools { spawn "mcontrolcenter"; }
+
+
+    // --- Commented out alternatives for your reference ---
+
+    Mod+B { spawn "zen-browser"; }
+    // Mod+B { spawn "google-chrome-stable"; }
+    Mod+Shift+B { spawn "zen-browser" "--private-window"; } // launch firefox-based browser (incognito)
+}

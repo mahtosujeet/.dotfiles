@@ -1,0 +1,18 @@
+gestures {
+    hot-corners {
+        top-left
+    }
+}
+
+input {
+    focus-follows-mouse
+    keyboard {
+        xkb {
+            layout "us"
+            options "caps:swapescape"
+        }
+        repeat-delay 250
+        repeat-rate 40
+        numlock
+    }
+}
