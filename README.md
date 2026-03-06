@@ -55,6 +55,28 @@ This configuration uses `Hyprdots` project as base for hyprland configuration.
 
 -------------------------------------------------
 
+# Auto sync of Git repos
+
+The list of repo is mentioned in `~/.local/bin/gitsync.sh`
+
+## setup
+```
+systemctl --user daemon-reload
+systemctl --user enable --now gitsync.timer
+```
+
+* To check the logs
+
+```
+systemctl --user status gitsync.service
+```
+
+* Timer lists
+
+```
+ systemctl --user list-timers gitsync.timer
+```
+
 # Config installation
 
 Following are the general packages that you need.
