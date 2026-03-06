@@ -1,10 +1,13 @@
 [Unit]
-Description=Run Git Sync Daily
+Description=Trigger Git Sync once a day
 
 [Timer]
+# Run exactly once per day
 OnCalendar=daily
-# When your PC is shut down
+# If the computer was off at midnight, run it as soon as you boot
 Persistent=true
+# Wait 2 minutes after you log in to let Wi-Fi connect
+OnStartupSec=2min
 
 [Install]
 WantedBy=timers.target

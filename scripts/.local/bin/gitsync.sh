@@ -1,49 +1,70 @@
 #!/bin/bash
 
 # --- Configuration ---
-# Add the full paths to the directories you want to sync
 TARGET_DIRS=(
-    "$HOME/Documents/excalidraw"
     "$HOME/Documents/myebooks"
-    # "$HOME/.dotfiles"
+    "$HOME/Documents/excalidraw"
 )
 
-# Current timestamp for the commit message
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
-echo "Starting Git Auto-Sync at $TIMESTAMP..."
+# Function to send a persistent error notification
+notify_error() {
+    notify-send "Git Sync Error" "$1" -i dialog-error -u critical
+}
 
+echo "=== Sync Started: $TIMESTAMP ==="
+
+# 1. Network Check
+# If we can't ping Google, exit with an error so systemd retries later.
+if ! ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1; then
+    echo "Network still unreachable. Exiting for retry..."
+    exit 1
+fi
+
+# 2. Iterate through directories
 for DIR in "${TARGET_DIRS[@]}"; do
     if [ -d "$DIR" ]; then
-        echo "---------------------------------------"
-        echo "Syncing: $DIR"
+        DIR_NAME=$(basename "$DIR")
+        echo "Processing: $DIR_NAME"
         cd "$DIR" || continue
 
-        # Check if it's a git repository
-        if [ ! -d ".git" ]; then
-            echo "Error: $DIR is not a Git repository. Skipping."
-            continue
-        fi
-
-        # Pull latest changes to avoid conflicts
-        git pull --rebase
-
-        # Check for changes (staged, unstaged, or untracked)
-        if [[ -n $(git status -s) ]]; then
+        # 3. Add and Commit local changes
+        # Check if 'git status' is not empty
+        if [ -n "$(git status --short)" ]; then
+            echo "  - Changes detected. Committing..."
             git add .
             git commit -m "Auto-sync: $TIMESTAMP"
-            
-            # Push to the current branch
-            BRANCH=$(git rev-parse --abbrev-ref HEAD)
-            git push origin "$BRANCH"
-            echo "Success: Changes pushed to $BRANCH."
         else
-            echo "No changes detected. Skipping push."
+            echo "  - No local changes to commit."
+        fi
+
+        # 4. Pull with Rebase
+        echo "  - Pulling from remote..."
+        CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        if ! git pull --rebase origin "$CURRENT_BRANCH"; then
+            echo "  [ERROR] Merge conflict in $DIR_NAME"
+            notify_error "Conflict in $DIR_NAME! Manual fix required."
+            exit 1 
+        fi
+
+        # 5. Push to Remote
+        # Check if local is ahead of remote
+        if [[ "$(git status -sb)" == *"ahead"* ]]; then
+            echo "  - Pushing changes..."
+            if git push origin "$CURRENT_BRANCH"; then
+                echo "  - Success: $DIR_NAME is synced."
+            else
+                echo "  [ERROR] Push failed."
+                notify_error "Failed to push $DIR_NAME."
+            fi
+        else
+            echo "  - Already up to date."
         fi
     else
-        echo "Warning: Directory $DIR does not exist."
+        echo "  [SKIP] Directory $DIR does not exist."
     fi
 done
 
-echo "---------------------------------------"
-echo "Sync complete."
+echo "=== Sync Complete ==="
+exit 0
