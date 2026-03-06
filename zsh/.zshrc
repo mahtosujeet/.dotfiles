@@ -252,13 +252,16 @@ alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
 alias np=pnpm
+alias packettracer="QT_QPA_PLATFORM=xcb \
+QT_QPA_PLATFORMTHEME=qt5ct \
+/usr/lib/packettracer/packettracer.AppImage"
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
 #}}}
 
 #: Configs {{{
-export PATH="$HOME/.local/bin:$HOME/.pyenv/shims:$PATH"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.pyenv/shims"
 export EDITOR='nvim'
 
 # zsh history
@@ -312,3 +315,6 @@ fi
 
 # DMS Shell zsh completions
 eval $(dms completion zsh)
+
+source "/opt/miniconda3/etc/profile.d/conda.sh"
+

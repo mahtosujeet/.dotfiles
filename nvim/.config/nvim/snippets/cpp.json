@@ -5,6 +5,14 @@
             "#include <bits/stdc++.h>",
             "using namespace std;",
             "",
+            "#define all(x) x.begin(), x.end()",
+            "#define rall(x) x.rbegin(), x.rend()",
+            "#define mod 1000000007",
+            "",
+            "typedef long long ll;",
+            "typedef pair<int, int> pii;",
+            "typedef pair<ll, ll> pll;",
+            "",
             "int main(int argc, char *argv[]) {",
             "    ios_base::sync_with_stdio(false);",
             "    cin.tie(NULL);",
@@ -144,7 +152,7 @@
             "};"
         ],
         "description": "DSU code snippet",
-        "scope": "c,cpp"
+        "scope": "cpp"
     },
     "BIT": {
         "prefix": ["bit", "fenwick"],
@@ -180,7 +188,7 @@
             "};"
         ],
         "description": "Binary Indexed Tree / Fenwick Tree implementation",
-        "scope": "c,cpp"
+        "scope": "cpp"
     }
 }
 
