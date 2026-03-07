@@ -20,3 +20,6 @@ vim.opt.wrap = true -- Enable line wrapping
 vim.opt.linebreak = true -- Wrap lines at convenient points
 vim.g.ai_cmp = true
 vim.lsp.handlers["textDocument/inlayHint"] = function() end
+
+-- 0: no hiding of ``` in markdown, 2: full hiding
+vim.opt.conceallevel = 0
