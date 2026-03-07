@@ -1,59 +1,42 @@
 
 # There is no place like `$HOME`
 
-This configuration uses `Hyprdots` project as base for hyprland configuration.
+My configuration files for Arch Linux.
 
 [![Last commit](https://img.shields.io/github/last-commit/MahtoSujeet/.dotfiles?&logo=github)](https://github.com/MahtoSujeet/.dotfiles)
 [![Size](https://img.shields.io/github/repo-size/MahtoSujeet/.dotfiles?color=green)](https://github.com/MahtoSujeet/.dotfiles)
 
---------------------------------
 
-## Installation
+# Installation
+1. Install `git stow`
+2. Clone the repo
+```
+git clone https://github.com/mahtosujeet/.dotfiles.git ~/.dotfiles
+```
+3. Stow the configs you want to use (see below for stow commands)
 
-1. Start with minimal install of Arch Linux.
+# Some Important stow commands
+1. To stow a config
+  ```sh
+  stow <config-name>
+  ```
+2. To unstow a config
+  ```sh
+  stow -D <config-name>
+  ```
+3. To stow all configs (*/ skips .git and README.md)
+  ```sh
+  stow */
+  ```
+4. To unstow all configs
+  ```sh
+  stow -D */
+  ```
+5. To stow a config to a specific location
+  ```sh
+  stow -t <target-location> <config-name>
+  ```
 
-    - Set `parallel_downloads` to 30 in `/etc/pacman.conf`
-    - Set mirrorlist to `Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch`
-
-1. Now for Hyprdots Installation
-
-    - `pacman -S --needed git base-devel`
-    - Install paru
-
-      ```bash
-      git clone https://aur.archlinux.org/paru-bin && cd paru-bin && makepkg -si
-      ```
-
-    - Install hyde-cli-git
-      `paru -Sy hyde-cli-git`
-
-    - Install Hyde interactively
-      `Hyde-install`
-
-1. Now to add dotfiles
-    Run the following piece of code in `$HOME` directory.
-
-    ```bash
-    git clone --bare https://github.com/MahtoSujeet/.dotfiles.git $HOME/.dotfiles
-    function dotfiles {
-      /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
-    }
-    mkdir -p .dotfiles-backup
-    dotfiles checkout
-    if [ $? = 0 ]; then
-      echo "Checked out dotfiles.";
-      else
-        echo "Backing up pre-existing dot files.";
-        dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-    fi;
-    rm .bashrc
-    dotfiles checkout
-    dotfiles config status.showUntrackedFiles no
-    ```
-
-    It takes the backup of current config files in `.dotfiles-backup` folder and installs remote config.
-
--------------------------------------------------
 
 # Auto sync of Git repos
 
@@ -82,20 +65,10 @@ systemctl --user status gitsync.service
 Following are the general packages that you need.
 
 ```txt
-kitty neovim zsh zsh-completions zsh-syntax-highlighting \
+neovim zsh zsh-completions zsh-syntax-highlighting \
 zsh-autosuggestions starship ntfs-3g intel-ucode npm
 ```
 
-## Waybar config
-
-Add following lines to the top of `~/.config/waybar/config.ctl`
-
-```txt
-0|36|bottom|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
-1|36|top|( cpu memory custom/cpuinfo ) ( hyprland/workspaces mpris )|( idle_inhibitor clock ) |( network backlight pulseaudio pulseaudio#microphone custom/keybindhint ) ( privacy tray battery custom/power )
-```
-
-------------------------------------
 
 # Other Useful stuff and fixes
 
@@ -126,20 +99,7 @@ ExecStart=-/sbin/agetty -o '-p -- sujeet' --noclear --skip-login - $TERM
 
 ## Chaotic AUR
 
-First, install the primary key - it can then be used to install Chaotic AUR's keyring and mirrorlist.
-
-```bash
-pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 3056513887B78AEB
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-```
-
-Append (adding to the end of the file) to `/etc/pacman.conf`:
-
-```
-[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist
-```
+[Official Installation Guide](https://aur.chaotic.cx/docs)
 
 ## To mount NTFS
 
@@ -212,26 +172,15 @@ Server = https://appuals.com/archlinux/$repo/os/$arch
 Server = http://mirror.bizflycloud.vn/archlinux/$repo/os/$arch
 Server = http://mirror.faizuladib.com/archlinux/$repo/os/$arch
 Server = http://vpsmurah.jagoanhosting.com/archlinux/$repo/os/$arch
-## India
 Server = https://mirror.sahil.world/archlinux/$repo/os/$arch
 Server = http://mirror.sahil.world/archlinux/$repo/os/$arch
 Server = https://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 Server = https://mirror.4v1.in/archlinux/$repo/os/$arch
-## India
-## India
-## India
 Server = https://in.mirrors.cicku.me/archlinux/$repo/os/$arch
-## India
-## India
 Server = https://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
-## India
 Server = http://mirrors.nxtgen.com/archlinux-mirror/$repo/os/$arch
-## India
 Server = http://mirror.albony.in/archlinux/$repo/os/$arch
-## India
 Server = http://mirror.4v1.in/archlinux/$repo/os/$arch
-## India
 Server = http://in.mirrors.cicku.me/archlinux/$repo/os/$arch
-## India
 Server = http://in-mirror.garudalinux.org/archlinux/$repo/os/$arch
 ```
