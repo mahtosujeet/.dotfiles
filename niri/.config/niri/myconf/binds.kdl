@@ -1,4 +1,5 @@
 binds {
+    Mod+Return { maximize-window-to-edges; }
     Alt+Return { fullscreen-window; }
     Mod+F { maximize-column; }
 
