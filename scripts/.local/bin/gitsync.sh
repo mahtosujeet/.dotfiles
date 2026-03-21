@@ -4,6 +4,7 @@
 TARGET_DIRS=(
     "$HOME/Documents/myebooks"
     "$HOME/Documents/excalidraw"
+    "$HOME/Pictures/wallpapers"
 )
 
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
