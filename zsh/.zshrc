@@ -142,8 +142,6 @@ alias pqi="pacman -Qi"
 alias outdated="paru -Sy && paru -Qu"
 alias resedue="paru -Qdt"
 alias clean="sudo pacman -Rns \$(paru -Qdtq)"
-alias echaotic='sudo sed -i "s/#\[chaotic-aur\]/\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\#Include = \/etc\/pacman.d\/chaotic-mirrorlist/Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
-alias dchaotic='sudo sed -i "s/\[chaotic-aur\]/#\[chaotic-aur\]/g" /etc/pacman.conf && sudo sed -i "s/\Include = \/etc\/pacman.d\/chaotic-mirrorlist/#Include = \/etc\/pacman.d\/chaotic-mirrorlist/g" /etc/pacman.conf'
 
 
 # ytdl
@@ -162,21 +160,17 @@ alias g="git"
 alias ga="git add"
 alias gp="git push"
 alias gd="git diff"
-# alias gs="git status"
+alias gs="git status"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias lg="lazygit"
 alias lgdf="lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
-# dotfiles config
-alias df='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dotfiles=df
-
 # Low quality (smallest size, 72dpi)
 pdf_low() {
   local infile="$1"
   local outfile="${infile%.*}-low.pdf"
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+  /usr/bin/gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
      -dPDFSETTINGS=/screen \
      -dNOPAUSE -dBATCH -dQUIET \
      -sOutputFile="$outfile" "$infile"
@@ -187,7 +181,7 @@ pdf_low() {
 pdf_mid() {
   local infile="$1"
   local outfile="${infile%.*}-mid.pdf"
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+  /usr/bin/gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
      -dPDFSETTINGS=/ebook \
      -dNOPAUSE -dBATCH -dQUIET \
      -sOutputFile="$outfile" "$infile"
@@ -198,27 +192,13 @@ pdf_mid() {
 pdf_high() {
   local infile="$1"
   local outfile="${infile%.*}-high.pdf"
-  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+  /usr/bin/gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
      -dPDFSETTINGS=/printer \
      -dNOPAUSE -dBATCH -dQUIET \
      -sOutputFile="$outfile" "$infile"
   echo "Created $outfile"
 }
 
-
-# Dotfiles info, use `dot` function
-dot(){
-  if [[ "$#" -eq 0 ]]; then
-    (cd /
-    for i in $(dotfiles ls-files); do
-      echo -n "$(dotfiles -c color.status=always status $i -s | sed "s#$i##")"
-      echo -e "¬/$i¬\e[0;33m$(dotfiles -c color.ui=always log -1 --format="%s" -- $i)\e[0m"
-    done
-    ) | column -t --separator=¬ -T2
-  else
-    dotfiles $*
-  fi
-}
 
 #vpn
 alias vc="protonvpn-cli c -f"
@@ -231,15 +211,6 @@ alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long li
 # alias ld='eza -lhD --icons=auto --group-directories-first' # long list dirs
 alias lt='eza --icons=auto --tree --git-ignore --group-directories-first' # list folder as tree
 
-# Git
-alias gs="git status"
-alias gcm="git commit -m"
-alias gco="git checkout"
-
-# github copliot
-alias ghce="gh copilot explain"
-alias ghcs="gh copilot suggest"
-
 # other
 # alias neofetch="clear && neofetch"
 # alias fastfetch="clear && fastfetch"
@@ -247,14 +218,13 @@ alias vi=nvim
 alias vim=neovide_hide_terminal.sh
 alias se=sudoedit
 alias tree="tree -I 'node_modules|__pycache__'"
-alias yd="yarn dev"
 alias history="fc -li 1"
 alias webcam="mpv av://v4l2:/dev/video0 --profile=low-latency --untimed"
 alias f=yazi
 alias np=pnpm
-alias packettracer="QT_QPA_PLATFORM=xcb \
-QT_QPA_PLATFORMTHEME=qt5ct \
-/usr/lib/packettracer/packettracer.AppImage"
+# alias packettracer="QT_QPA_PLATFORM=xcb \
+# QT_QPA_PLATFORMTHEME=qt5ct \
+# /usr/lib/packettracer/packettracer.AppImage"
 
 # zoxide - better cd
 eval "$(zoxide init zsh --cmd=cd)"
@@ -291,13 +261,11 @@ yazi() {
 #}}}
 
 #: Fixes {{{
-# for firefox wayland support & touch screen
-# export MOZ_USE_XINPUT2=1
-# export MOZ_ENABLE_WAYLAND=1
 
 #}}}
-#
-#
+
+
+# MNNIT Proxy
 # export http_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
 # export https_proxy="http://edcguest:edcguest@172.31.102.29:3128/"
 # export HTTP_PROXY="http://edcguest:edcguest@172.31.102.29:3128/"
@@ -316,5 +284,5 @@ fi
 # DMS Shell zsh completions
 eval $(dms completion zsh)
 
-source "/opt/miniconda3/etc/profile.d/conda.sh"
+# source "/opt/miniconda3/etc/profile.d/conda.sh"
 
