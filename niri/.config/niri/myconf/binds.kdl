@@ -22,7 +22,9 @@ binds {
 
     // --- Commented out alternatives for your reference ---
 
-    Mod+B { spawn "zen-browser"; }
-    // Mod+B { spawn "google-chrome-stable"; }
-    Mod+Shift+B { spawn "zen-browser" "--private-window"; } // launch firefox-based browser (incognito)
+    // Mod+B { spawn "zen-browser"; }
+    // Mod+Shift+B { spawn "zen-browser" "--private-window"; } // launch firefox-based browser (incognito)
+
+    Mod+B { spawn "helium-browser"; }
+    Mod+Shift+B { spawn "helium-browser" "--incognito"; } // launch firefox-based browser (incognito)
 }
