@@ -7,18 +7,11 @@
             "input = lambda: sys.stdin.readline().rstrip()",
             "MOD = 1_000_000_007",
             "",
-            "def modpow(a, b, mod=MOD):",
-            "    res = 1",
-            "    while b:",
-            "        if b & 1: res = res * a % mod",
-            "        a = a * a % mod",
-            "        b //= 2",
-            "    return res",
-            "",
             "def solve():",
             "    $1",
             "",
             "def main():",
+            "    t = 1",
             "    t = int(input())",
             "    for _ in range(t):",
             "        solve()",
@@ -28,5 +21,24 @@
         ],
         "description": "Minimal Python CP template with fast I/O, modpow, and yes/no helpers.",
         "scope": "python"
+    },
+    "array input": {
+        "prefix": ["int"],
+        "body": [
+            "list(map(int,input().split()))"
+        ]
+    },
+    "modular-exponentiation": {
+        "prefix": ["pow"],
+        "body": [
+            "def modpow(a, b, mod=MOD):",
+            "    res = 1",
+            "    while b:",
+            "        if b & 1: res = res * a % mod",
+            "        a = a * a % mod",
+            "        b //= 2",
+            "    return res",
+            ""
+        ]
     }
 }
