@@ -3,5 +3,9 @@
     "enabled": true,
     "criticalThreshold": 15,
     "warningThreshold": 25
+  },
+  "dankKDEConnect": {
+    "enabled": true,
+    "selectedDeviceId": "158175a577d34d52b8f77962837a659e"
   }
 }

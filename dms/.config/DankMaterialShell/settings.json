@@ -4,6 +4,7 @@
   "customThemeFile": "",
   "registryThemeVariants": {},
   "matugenScheme": "scheme-tonal-spot",
+  "matugenContrast": 0,
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -23,6 +24,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "firstDayOfWeek": -1,
+  "showWeekNumber": false,
   "use24HourClock": false,
   "showSeconds": false,
   "padHours12Hour": true,
@@ -46,6 +48,10 @@
   "modalElevationEnabled": true,
   "popoutElevationEnabled": true,
   "barElevationEnabled": true,
+  "blurEnabled": false,
+  "blurBorderColor": "outline",
+  "blurBorderCustomColor": "#ffffff",
+  "blurBorderOpacity": 1,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": true,
@@ -140,14 +146,15 @@
   "showWorkspacePadding": false,
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
-  "workspaceDragReorder": true,
+  "workspaceDragReorder": false,
   "maxWorkspaceIcons": 3,
   "workspaceAppIconSizeOffset": 0,
   "groupWorkspaceApps": true,
   "workspaceFollowFocus": false,
-  "showOccupiedWorkspacesOnly": false,
+  "showOccupiedWorkspacesOnly": true,
   "reverseScrolling": false,
   "dwlShowAllTags": false,
+  "workspaceActiveAppHighlightEnabled": false,
   "workspaceColorMode": "default",
   "workspaceOccupiedColorMode": "none",
   "workspaceUnfocusedColorMode": "default",
@@ -158,6 +165,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": false,
+  "mediaAdaptiveWidthEnabled": true,
   "audioVisualizerEnabled": true,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
@@ -202,6 +210,7 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
+  "rememberLastQuery": false,
   "spotlightSectionViewModes": {},
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
@@ -211,6 +220,8 @@
   "dankLauncherV2BorderColor": "primary",
   "dankLauncherV2ShowFooter": true,
   "dankLauncherV2UnloadOnClose": false,
+  "dankLauncherV2IncludeFilesInAll": false,
+  "dankLauncherV2IncludeFoldersInAll": false,
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
@@ -250,6 +261,7 @@
   "notepadLastCustomTransparency": 0.7,
   "soundsEnabled": true,
   "useSystemSoundTheme": false,
+  "soundLogin": false,
   "soundNewNotification": true,
   "soundVolumeChanged": true,
   "soundPluggedIn": true,
@@ -258,11 +270,13 @@
   "acSuspendTimeout": 900,
   "acSuspendBehavior": 2,
   "acProfileName": "2",
+  "acPostLockMonitorTimeout": 0,
   "batteryMonitorTimeout": 0,
   "batteryLockTimeout": 300,
   "batterySuspendTimeout": 600,
   "batterySuspendBehavior": 2,
   "batteryProfileName": "1",
+  "batteryPostLockMonitorTimeout": 0,
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
@@ -280,6 +294,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": true,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": true,
@@ -302,10 +320,23 @@
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
+  "matugenTemplateZed": true,
+  "matugenTemplateNeovimSettings": {
+    "dark": {
+      "baseTheme": "github_dark",
+      "harmony": 0.5
+    },
+    "light": {
+      "baseTheme": "github_light",
+      "harmony": 0.5
+    }
+  },
+  "matugenTemplateNeovimSetBackground": true,
   "showDock": true,
   "dockAutoHide": false,
   "dockSmartAutoHide": true,
   "dockGroupByApp": false,
+  "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": true,
   "dockPosition": 1,
   "dockSpacing": 4,
@@ -331,7 +362,7 @@
   "notificationOverlayEnabled": false,
   "notificationPopupShadowEnabled": false,
   "notificationPopupPrivacyMode": false,
-  "modalDarkenBackground": true,
+  "modalDarkenBackground": false,
   "lockScreenShowPowerActions": true,
   "lockScreenShowSystemIcons": true,
   "lockScreenShowTime": true,
@@ -366,6 +397,7 @@
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
   "notificationRules": [],
+  "notificationFocusedMonitor": false,
   "osdAlwaysShowValue": true,
   "osdPosition": 5,
   "osdVolumeEnabled": true,
@@ -378,7 +410,7 @@
   "osdPowerProfileEnabled": true,
   "osdAudioOutputEnabled": true,
   "powerActionConfirm": true,
-  "powerActionHoldDuration": 1,
+  "powerActionHoldDuration": 0.5,
   "powerMenuActions": [
     "reboot",
     "logout",
@@ -444,11 +476,34 @@
         }
       ],
       "rightWidgets": [
-        "cpuUsage",
-        "memUsage",
-        "systemTray",
-        "battery",
-        "controlCenterButton"
+        {
+          "id": "dankKDEConnect",
+          "enabled": true
+        },
+        {
+          "id": "cpuUsage",
+          "enabled": true
+        },
+        {
+          "id": "memUsage",
+          "enabled": true
+        },
+        {
+          "id": "network_speed_monitor",
+          "enabled": true
+        },
+        {
+          "id": "systemTray",
+          "enabled": true
+        },
+        {
+          "id": "battery",
+          "enabled": true
+        },
+        {
+          "id": "controlCenterButton",
+          "enabled": true
+        }
       ],
       "spacing": 0,
       "innerPadding": 0,
@@ -571,5 +626,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 6
+  "configVersion": 5
 }
